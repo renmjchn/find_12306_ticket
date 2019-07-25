@@ -60,6 +60,8 @@ def main(date,startcity,endcity):
         arrive_time = data_list[9]
         # 总耗时
         time_used_up = data_list[10]
+        # 商务特等座
+        businese_seat = data_list[32] or '--'
         # 一等座
         first_class_seat = data_list[31] or '--'
         # 二等座
@@ -73,7 +75,7 @@ def main(date,startcity,endcity):
         # 无座
         no_seat = data_list[26] or '--'
 
-        list = ('车次:{} 出发站:{} 目的地:{} 出发时间:{} 到达时间:{} 火车运行时间:{} 座位情况：\n 一等座：「{}」 二等座：「{}」 软卧：「{}」 硬卧：「{}」 硬座：「{}」 无座：「{}」'.format(train_no, from_station_name, to_station_name, start_time, arrive_time, time_used_up, first_class_seat,second_class_seat, soft_sleep, hard_sleep, hard_seat, no_seat))
+        list = ('车次:{} 出发站:{} 目的地:{} 出发时间:{} 到达时间:{} 火车运行时间:{} 座位情况：\n 商务特等座：「{}」 一等座：「{}」 二等座：「{}」 软卧：「{}」 硬卧：「{}」 硬座：「{}」 无座：「{}」'.format(train_no, from_station_name, to_station_name, start_time, arrive_time, time_used_up, businese_seat, first_class_seat,second_class_seat, soft_sleep, hard_sleep, hard_seat, no_seat))
 
         print('*'*100)
         print(list)
@@ -82,7 +84,8 @@ def main(date,startcity,endcity):
 
 if __name__ == '__main__':
     try:
-        date = str(input('请输入日期(格式“2019-01-01”)： '))
+        print('\n###12306火车票查询小程序，仅支持未来两个月内余票查询###\n')
+        date = str(input('请输入查询日期(20XX-XX-XX)： '))
         startcity = str(input('出发站： '))
         endcity = str(input('到达站：'))
         main(date,startcity,endcity)
